@@ -2,8 +2,18 @@ import { createServerComponentClient } from "@supabase/auth-helpers-nextjs";
 import { cookies } from "next/headers";
 import Link from "next/link";
 import LogoutButton from "../components/LogoutButton";
+import ItemList from "@/components/ItemList";
+import NewItemBuilder from "@/components/NewItemBuilder";
 
 export const dynamic = "force-dynamic";
+
+interface Todo {
+  id: number;
+  created_at: Date;
+  title: string;
+  is_complete: boolean | null;
+  user_id: string;
+}
 
 export default async function Index() {
   const supabase = createServerComponentClient({ cookies });
@@ -28,6 +38,10 @@ export default async function Index() {
             Login
           </Link>
         )}
+      </div>
+      <div>
+        <NewItemBuilder />
+        <ItemList />
       </div>
     </div>
   );
