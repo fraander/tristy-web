@@ -17,7 +17,6 @@ export default function NewItemBuilder() {
       is_complete: isComplete === "true" ? true : false,
       title: title,
     });
-    console.log(data, error);
   }
 
   return (
